@@ -2,11 +2,16 @@
 
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState } from 'react';
 import Home from './page';
-
+import './globals.css';
 export default function RootLayout({ children }) {
-  const [queryClient] = useState(() => new QueryClient());
+  const queryClient = new QueryClient({
+    defaultOptions :{
+      queries:{
+        refetchOnWindowFocus:false
+      }
+    }
+  }); 
 
   return (
     <html lang="en">
